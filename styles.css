@@ -1,9 +1,9 @@
 :root {
-    --color-beige: #F5F5DC;
-    --color-soft-blue: #E6F3FF;
-    --color-blush: #FFE4E1;
-    --color-text: #333333;
-    --color-accent: #D4A373;
+    --color-primary: #4169E1; /* Royal blue for main elements */
+    --color-secondary: #87CEEB; /* Light sky blue for backgrounds */
+    --color-accent: #FF6B4A; /* Coral/orange for accents and CTAs */
+    --color-dark: #483C32; /* Dark brown for text */
+    --color-light: #F0F8FF; /* Light blue tint for backgrounds */
     --color-background: #FFFFFF;
 }
 
@@ -16,7 +16,7 @@
 body {
     font-family: 'Source Sans Pro', sans-serif;
     line-height: 1.6;
-    color: var(--color-text);
+    color: var(--color-dark);
     background-color: var(--color-background);
 }
 
@@ -35,18 +35,18 @@ h1 {
     font-size: 3.5rem;
     line-height: 1.2;
     margin-bottom: 1rem;
-    color: var(--color-text);
+    color: var(--color-primary);
 }
 
 h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: var(--color-text);
+    color: var(--color-dark);
 }
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, var(--color-beige), var(--color-soft-blue));
+    background: linear-gradient(135deg, var(--color-light), var(--color-secondary));
     padding: 100px 0;
     min-height: 100vh;
     display: flex;
@@ -72,14 +72,14 @@ h2 {
 .subtitle {
     font-size: 1.25rem;
     margin-bottom: 2rem;
-    color: var(--color-text);
+    color: var(--color-dark);
 }
 
 .hook {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 2rem;
-    color: var(--color-accent);
+    color: var(--color-primary);
 }
 
 .book-cover {
@@ -113,7 +113,7 @@ h2 {
     left: 40px;
     right: -20px;
     bottom: -20px;
-    background: var(--color-accent);
+    background: var(--color-primary);
     opacity: 0.08;
     border-radius: 10px;
     z-index: -1;
@@ -134,12 +134,13 @@ h2 {
     text-decoration: none;
     border-radius: 5px;
     font-weight: 600;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: all 0.4s ease;
 }
 
 .cta-button:hover {
+    background-color: var(--color-primary);
     transform: translateY(-2px);
-    background-color: #C49262;
+    box-shadow: 0 5px 15px rgba(65, 105, 225, 0.3);
 }
 
 /* About Book Section */
@@ -175,7 +176,7 @@ h2 {
 /* Who It's For Section */
 .who-its-for {
     padding: 100px 0;
-    background-color: var(--color-blush);
+    background-color: var(--color-light);
     text-align: center;
 }
 
@@ -193,7 +194,7 @@ h2 {
 /* Testimonials Section */
 .testimonials {
     padding: 100px 0;
-    background-color: var(--color-soft-blue);
+    background-color: var(--color-secondary);
     text-align: center;
 }
 
@@ -205,22 +206,22 @@ h2 {
 blockquote {
     font-size: 1.5rem;
     font-style: italic;
-    color: var(--color-text);
+    color: var(--color-dark);
     margin: 2rem 0;
 }
 
 /* Final CTA Section */
 .final-cta {
     padding: 100px 0;
-    background-color: var(--color-beige);
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-light));
     text-align: center;
 }
 
 /* Footer */
 footer {
     padding: 2rem 0;
-    background-color: var(--color-text);
-    color: white;
+    background-color: var(--color-dark);
+    color: var(--color-light);
     text-align: center;
 }
 
@@ -272,5 +273,105 @@ footer {
 
     .book-cover {
         max-width: 320px;
+    }
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--color-background);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    animation: modalAppear 0.3s ease-out;
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-content h2 {
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.modal-content p {
+    margin-bottom: 2rem;
+    color: var(--color-dark);
+    font-size: 1.1rem;
+}
+
+.close-button {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-dark);
+    transition: color 0.3s ease;
+}
+
+.close-button:hover {
+    color: var(--color-primary);
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.secondary-button {
+    padding: 1rem 2rem;
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.secondary-button:hover {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 1.5rem;
+    }
+
+    .modal-buttons {
+        flex-direction: column;
+    }
+
+    .modal-content h2 {
+        font-size: 1.5rem;
     }
 } 

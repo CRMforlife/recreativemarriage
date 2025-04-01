@@ -84,5 +84,49 @@
             <p>&copy; 2024 ReCreative Marriage. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Amazon Buy Modal -->
+    <div id="buyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Purchase ReCreative Marriage</h2>
+            <p>You're about to be redirected to Amazon to purchase "ReCreative Marriage"</p>
+            <div class="modal-buttons">
+                <a href="https://a.co/d/bp4vWb1" class="cta-button" target="_blank" rel="noopener">Continue to Amazon</a>
+                <button class="secondary-button">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('buyModal');
+        const buyButtons = document.querySelectorAll('.cta-button');
+        const closeButton = document.querySelector('.close-button');
+        const cancelButton = document.querySelector('.secondary-button');
+
+        // Open modal on buy button clicks
+        buyButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                modal.style.display = 'flex';
+            });
+        });
+
+        // Close modal functions
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        closeButton.addEventListener('click', closeModal);
+        cancelButton.addEventListener('click', closeModal);
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html> 
