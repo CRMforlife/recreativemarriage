@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="fi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suhteen terveystarkastus - ReCreative Marriage</title>
-    <meta name="description" content="Tee ilmainen suhteen terveystarkastus ja saa henkilökohtaista palautetta suhteenne vahvuuksista ja kehityskohteista.">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="css/main.css">
+    <meta name="description" content="Take the Relationship Health Check - Assess and improve your partnership">
+    <title>Relationship Health Check - ReCreative Marriage</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-58DS45Y0SF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-58DS45Y0SF');
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="health-check.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="global-nav">
@@ -268,85 +269,101 @@
 
                     <div class="navigation-buttons">
                         <button type="button" id="prev-question" class="secondary-button" disabled>Previous</button>
-                        <button type="button" id="next-question" class="secondary-button">Next</button>
-                        <button type="submit" id="submit-assessment" class="cta-button" style="display: none;">Submit Assessment</button>
+                        <button type="button" id="next-question" class="cta-button">Next</button>
+                        <button type="submit" id="submit-assessment" class="cta-button" style="display: none;">Submit</button>
                     </div>
                 </form>
             </div>
 
             <div id="results-section" class="assessment-section">
-                <h2>Your Relationship Health Results</h2>
+                <h2>Your Relationship Health Check Results</h2>
                 <div class="results-summary">
-                    <p>Based on your responses, here's an overview of your relationship's strengths and areas for growth:</p>
+                    <p>This test aims to increase awareness and spark meaningful conversations. No relationship is perfect, but openness and effort make a difference.</p>
+                    <p>If any results raised concerns or questions, consider contacting a professional for further support.</p>
                 </div>
 
                 <div class="results-container">
-                    <!-- Communication Results -->
                     <div class="category-results">
                         <h3>Communication</h3>
                         <div class="score-bar">
-                            <div id="communication-score" class="score-fill"></div>
+                            <div class="score-fill" id="communication-score" style="width: 0%;"></div>
                         </div>
                         <p class="score-text">Score: <span id="communication-score-value">0</span>/15</p>
-                        <p id="communication-feedback" class="score-feedback"></p>
+                        <div class="score-feedback" id="communication-feedback"></div>
                     </div>
 
-                    <!-- Emotional Connection Results -->
                     <div class="category-results">
                         <h3>Emotional Connection</h3>
                         <div class="score-bar">
-                            <div id="emotional-score" class="score-fill"></div>
+                            <div class="score-fill" id="emotional-score" style="width: 0%;"></div>
                         </div>
                         <p class="score-text">Score: <span id="emotional-score-value">0</span>/15</p>
-                        <p id="emotional-feedback" class="score-feedback"></p>
+                        <div class="score-feedback" id="emotional-feedback"></div>
                     </div>
 
-                    <!-- Trust & Honesty Results -->
                     <div class="category-results">
                         <h3>Trust & Honesty</h3>
                         <div class="score-bar">
-                            <div id="trust-score" class="score-fill"></div>
+                            <div class="score-fill" id="trust-score" style="width: 0%;"></div>
                         </div>
                         <p class="score-text">Score: <span id="trust-score-value">0</span>/15</p>
-                        <p id="trust-feedback" class="score-feedback"></p>
+                        <div class="score-feedback" id="trust-feedback"></div>
                     </div>
 
-                    <!-- Shared Values Results -->
                     <div class="category-results">
                         <h3>Shared Values & Vision</h3>
                         <div class="score-bar">
-                            <div id="values-score" class="score-fill"></div>
+                            <div class="score-fill" id="values-score" style="width: 0%;"></div>
                         </div>
                         <p class="score-text">Score: <span id="values-score-value">0</span>/15</p>
-                        <p id="values-feedback" class="score-feedback"></p>
+                        <div class="score-feedback" id="values-feedback"></div>
+                    </div>
+
+                    <div class="category-results">
+                        <h3>Daily Life & Responsibilities</h3>
+                        <div class="score-bar">
+                            <div class="score-fill" id="daily-score" style="width: 0%;"></div>
+                        </div>
+                        <p class="score-text">Score: <span id="daily-score-value">0</span>/15</p>
+                        <div class="score-feedback" id="daily-feedback"></div>
+                    </div>
+
+                    <div class="category-results">
+                        <h3>Intimacy & Sexual Connection</h3>
+                        <div class="score-bar">
+                            <div class="score-fill" id="intimacy-score" style="width: 0%;"></div>
+                        </div>
+                        <p class="score-text">Score: <span id="intimacy-score-value">0</span>/15</p>
+                        <div class="score-feedback" id="intimacy-feedback"></div>
                     </div>
                 </div>
 
                 <div class="action-buttons">
                     <button id="download-results" class="secondary-button">Download Results</button>
-                    <button id="share-results" class="cta-button">Share Results</button>
+                    <button id="share-results" class="secondary-button">Share Results</button>
+                    <a href="https://a.co/d/bp4vWb1" class="cta-button" target="_blank" rel="noopener">Order on Amazon</a>
                 </div>
-            </div>
-
-            <!-- Share Results Modal -->
-            <div id="share-modal" class="modal">
-                <div class="modal-content">
-                    <span class="close-modal">&times;</span>
-                    <h3>Share Your Results</h3>
-                    <form id="share-form">
-                        <div class="form-group">
-                            <label for="partner-email">Partner's Email:</label>
-                            <input type="email" id="partner-email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Add a Personal Message:</label>
-                            <textarea id="message" rows="4"></textarea>
-                        </div>
-                        <div class="form-actions">
-                            <button type="button" class="secondary-button close-modal">Cancel</button>
-                            <button type="submit" class="cta-button">Send Results</button>
-                        </div>
-                    </form>
+                
+                <div id="share-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h3>Share Results with Your Partner</h3>
+                        <p>Enter your partner's email address to send them your relationship health check results:</p>
+                        <form id="share-form">
+                            <div class="form-group">
+                                <label for="partner-email">Partner's Email:</label>
+                                <input type="email" id="partner-email" name="partner-email" required placeholder="partner@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Personal Message (optional):</label>
+                                <textarea id="message" name="message" rows="4" placeholder="Add a personal note to your partner..."></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="secondary-button close-modal">Cancel</button>
+                                <button type="submit" class="cta-button">Send Results</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -358,6 +375,6 @@
         </div>
     </footer>
 
-    <script src="js/modules/health-check.js"></script>
+    <script src="health-check.js"></script>
 </body>
 </html> 
