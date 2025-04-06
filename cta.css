@@ -1,98 +1,130 @@
 /* Interest CTA Module Styles */
 .interest-cta {
-    background-color: #f8f9fa;
+    background-color: #F5F5DC;
     padding: 4rem 0;
-    text-align: center;
 }
 
 .interest-cta h2 {
+    font-family: 'Garamond', serif;
     color: #003366;
-    margin-bottom: 1rem;
-    font-family: 'Playfair Display', serif;
+    text-align: center;
+    margin-bottom: 1.5rem;
 }
 
 .cta-description {
-    max-width: 700px;
+    font-family: 'Lato', sans-serif;
+    color: #333333;
+    text-align: center;
+    max-width: 600px;
     margin: 0 auto 2rem;
-    color: #555;
-    font-size: 1.1rem;
 }
 
 .interest-cta-form {
     max-width: 800px;
     margin: 0 auto;
-    text-align: left;
+    padding: 2rem;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .checkbox-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
     margin-bottom: 2rem;
 }
 
 .checkbox-grid label {
     display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background-color: #FFFFFF;
+    border: 1px solid #003366;
+    border-radius: 4px;
     cursor: pointer;
-    padding: 0.75rem;
-    border-radius: 6px;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: all 0.3s ease;
 }
 
 .checkbox-grid label:hover {
+    background-color: #F5F5DC;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .checkbox-grid input[type="checkbox"] {
-    margin-top: 0.25rem;
     width: 18px;
     height: 18px;
+    border: 2px solid #003366;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
 .checkbox-grid span {
-    font-family: 'Source Sans Pro', sans-serif;
-    color: #333;
+    font-family: 'Lato', sans-serif;
+    color: #333333;
 }
 
-.interest-cta .gdpr-consent {
-    margin: 1.5rem 0;
+.gdpr-consent {
+    margin: 2rem 0;
     padding: 1rem;
-    background-color: rgba(0, 51, 102, 0.05);
-    border-radius: 6px;
-}
-
-.interest-cta .gdpr-consent label {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.5rem;
-    font-size: 0.9rem;
-    color: #666;
-}
-
-.interest-cta .gdpr-consent input[type="checkbox"] {
-    margin-top: 0.25rem;
-}
-
-.interest-cta .cta-button {
-    background-color: #800020;
-    color: white;
-    border: none;
-    padding: 0.75rem 2rem;
+    background-color: #F5F5DC;
     border-radius: 4px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    display: inline-block;
 }
 
-.interest-cta .cta-button:hover {
-    background-color: #600018;
+.gdpr-consent label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    color: #333333;
+}
+
+.cta-button {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 2rem auto 0;
+    padding: 1rem 2rem;
+    background-color: #D4AF37;
+    color: #003366;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.thank-you-message {
+    text-align: center;
+    padding: 2rem;
+}
+
+.thank-you-message h2 {
+    font-family: 'Garamond', serif;
+    color: #003366;
+    margin-bottom: 1rem;
+}
+
+.thank-you-message p {
+    font-family: 'Lato', sans-serif;
+    color: #333333;
 }
 
 @media (max-width: 768px) {
@@ -100,30 +132,7 @@
         grid-template-columns: 1fr;
     }
     
-    .interest-cta {
-        padding: 3rem 0;
+    .interest-cta-form {
+        padding: 1rem;
     }
-}
-
-.thank-you-message {
-    text-align: center;
-    padding: 2rem;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.thank-you-message h3 {
-    color: #003366;
-    margin-bottom: 1rem;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-}
-
-.thank-you-message p {
-    color: #555;
-    font-size: 1.1rem;
-    line-height: 1.6;
 } 
