@@ -133,7 +133,21 @@ document.addEventListener('DOMContentLoaded', function() {
             if (response.ok) {
                 // Replace form content with thank you message
                 const formContainer = document.querySelector('.interest-cta-form');
-                formContainer.innerHTML = displayThankYouMessage(interests);
+                const thankYouContent = displayThankYouMessage(interests);
+                
+                // Ensure the content is properly replaced
+                if (formContainer) {
+                    formContainer.innerHTML = thankYouContent;
+                    console.log('Thank you message displayed successfully');
+                    
+                    // Store that interests were submitted
+                    localStorage.setItem('interestsSubmitted', 'true');
+                    
+                    // Scroll to the thank you message
+                    formContainer.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    console.error('Could not find form container element');
+                }
             } else {
                 const errorData = await response.json().catch(() => ({}));
                 console.error('Error:', errorData);

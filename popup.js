@@ -160,13 +160,27 @@ document.addEventListener('DOMContentLoaded', function() {
             if (response.ok) {
                 // Replace popup content with thank you message
                 const popupContent = document.querySelector('.interest-popup');
-                popupContent.innerHTML = displayThankYouMessage(interests);
+                const thankYouContent = displayThankYouMessage(interests);
                 
-                // Set a timeout to close the popup after 10 seconds
-                setTimeout(() => {
-                    document.getElementById('interest-popup-overlay').classList.remove('active');
-                    localStorage.setItem('popupShown', 'true');
-                }, 10000);
+                // Ensure the content is properly replaced
+                if (popupContent) {
+                    popupContent.innerHTML = thankYouContent;
+                    console.log('Thank you message displayed successfully');
+                    
+                    // Store that interests were submitted
+                    localStorage.setItem('interestsSubmitted', 'true');
+                    
+                    // Set a timeout to close the popup after 10 seconds
+                    setTimeout(() => {
+                        const overlay = document.getElementById('interest-popup-overlay');
+                        if (overlay) {
+                            overlay.classList.remove('active');
+                            localStorage.setItem('popupShown', 'true');
+                        }
+                    }, 10000);
+                } else {
+                    console.error('Could not find popup content element');
+                }
             } else {
                 const errorData = await response.json().catch(() => ({}));
                 console.error('Error:', errorData);
