@@ -114,22 +114,17 @@
 .likert-scale {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-top: 15px;
+    margin: 20px 0;
+    gap: 5px;
 }
 
 .likert-scale label {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    padding: 8px 12px;
-    border-radius: 6px;
-    transition: background-color 0.2s ease;
-}
-
-.likert-scale label:hover {
-    background-color: #e9ecef;
+    flex: 1;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #555;
+    min-width: 40px;
+    white-space: nowrap;
 }
 
 .likert-scale input[type="radio"] {
@@ -472,13 +467,17 @@
     }
     
     .likert-scale {
-        flex-wrap: wrap;
-        gap: 10px;
+        flex-wrap: nowrap;
+        gap: 2px;
+        overflow-x: auto;
+        padding-bottom: 5px;
+        -webkit-overflow-scrolling: touch;
     }
     
     .likert-scale label {
-        flex: 1 0 18%;
-        min-width: 60px;
+        flex: 0 0 auto;
+        min-width: 35px;
+        font-size: 0.85rem;
     }
     
     .navigation-buttons {
@@ -559,5 +558,14 @@
     .improvements li,
     .recommendations li {
         font-size: 0.95rem;
+    }
+    
+    .likert-scale {
+        gap: 1px;
+    }
+    
+    .likert-scale label {
+        min-width: 30px;
+        font-size: 0.8rem;
     }
 } 
