@@ -1,13 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Function to get the API URL based on environment
     function getApiUrl() {
-        // Check if we're on GitHub Pages
-        if (window.location.hostname.includes('github.io')) {
-            // For GitHub Pages, use a serverless function or static JSON
-            // For now, we'll simulate success and store in localStorage
-            return 'static';
-        }
-        return 'http://localhost:3000';
+        // Always use static mode since we don't have a backend server
+        return 'static';
     }
 
     // Function to save interests locally when API is not available
@@ -113,49 +108,39 @@ document.addEventListener('DOMContentLoaded', function() {
         submitButton.disabled = true;
         
         try {
-            console.log('Sending interests:', interests);
+            console.log('Saving interests locally:', interests);
             
-            let response;
-            const apiUrl = getApiUrl();
+            // Save to localStorage
+            await saveInterestsLocally(interests);
             
-            if (apiUrl === 'static') {
-                response = await saveInterestsLocally(interests);
-            } else {
-                response = await fetch(`${apiUrl}/api/save-interests`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ interests })
-                });
-            }
+            // Always show thank you message
+            const formContainer = document.querySelector('.interest-cta-form');
+            const thankYouContent = displayThankYouMessage(interests);
             
-            console.log('Response status:', response.ok);
-            
-            if (response.ok) {
-                // Replace form content with thank you message
-                const formContainer = document.querySelector('.interest-cta-form');
-                const thankYouContent = displayThankYouMessage(interests);
+            if (formContainer) {
+                formContainer.innerHTML = thankYouContent;
+                console.log('Thank you message displayed successfully');
                 
-                // Ensure the content is properly replaced
-                if (formContainer) {
-                    formContainer.innerHTML = thankYouContent;
-                    console.log('Thank you message displayed successfully');
-                    
-                    // Store that interests were submitted
-                    localStorage.setItem('interestsSubmitted', 'true');
-                    
-                    // Scroll to the thank you message
-                    formContainer.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                    console.error('Could not find form container element');
-                }
+                // Store that interests were submitted
+                localStorage.setItem('interestsSubmitted', 'true');
+                
+                // Scroll to the thank you message
+                formContainer.scrollIntoView({ behavior: 'smooth' });
             } else {
-                const errorData = await response.json().catch(() => ({}));
-                console.error('Error:', errorData);
-                throw new Error(errorData.error || 'Failed to save interests');
+                console.error('Could not find form container element');
             }
         } catch (error) {
             console.error('Error saving interests:', error);
-            alert('There was an error saving your preferences: ' + error.message + '. Please try again later.');
+            
+            // Even if saving fails, show the thank you message
+            const formContainer = document.querySelector('.interest-cta-form');
+            const thankYouContent = displayThankYouMessage(interests);
+            
+            if (formContainer) {
+                formContainer.innerHTML = thankYouContent;
+                console.log('Thank you message displayed despite error');
+                formContainer.scrollIntoView({ behavior: 'smooth' });
+            }
         } finally {
             // Reset button state
             submitButton.textContent = originalButtonText;
