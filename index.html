@@ -15,11 +15,49 @@
       gtag('config', 'G-58DS45Y0SF');
     </script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="popup.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Interest Survey Popup -->
+    <div id="interest-popup-overlay" class="popup-overlay">
+        <div class="interest-popup">
+            <button id="close-popup" class="close-popup">&times;</button>
+            <h3>Which topics are you especially interested in learning more about?</h3>
+            <form id="interest-form" class="interest-form">
+                <label>
+                    <input type="checkbox" name="interests" value="creativity">
+                    How to develop creativity in a relationship
+                </label>
+                <label>
+                    <input type="checkbox" name="interests" value="empathy">
+                    Empathy and listening skills
+                </label>
+                <label>
+                    <input type="checkbox" name="interests" value="intimacy">
+                    Rediscovering intimacy
+                </label>
+                <label>
+                    <input type="checkbox" name="interests" value="conflict">
+                    Constructive handling of disagreements
+                </label>
+                <label>
+                    <input type="checkbox" name="interests" value="imagination">
+                    Using imagination to strengthen the relationship
+                </label>
+                <div class="gdpr-consent">
+                    <label>
+                        <input type="checkbox" id="gdpr-consent" required>
+                        I consent to the processing of my data for the purpose of receiving personalized content.
+                    </label>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
     <nav class="global-nav">
         <div class="container">
             <div class="nav-content">
@@ -104,5 +142,7 @@
             <p>&copy; 2024 ReCreative Marriage. All rights reserved.</p>
         </div>
     </footer>
+
+    <script src="popup.js"></script>
 </body>
 </html> 
