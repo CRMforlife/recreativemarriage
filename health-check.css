@@ -2,7 +2,7 @@
 .health-check-page {
     padding: 120px 0 60px;
     min-height: 100vh;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+    background: linear-gradient(135deg, var(--warm-beige) 0%, #FFFFFF 100%);
 }
 
 /* Assessment Sections */
@@ -30,11 +30,11 @@
     margin-bottom: 20px;
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #555;
+    color: var(--text-dark);
 }
 
 .assessment-info {
-    background-color: #f8f9fa;
+    background-color: var(--warm-beige);
     border-radius: 8px;
     padding: 20px;
     margin: 30px 0;
@@ -44,6 +44,7 @@
 .assessment-info p {
     margin-bottom: 10px;
     font-size: 1rem;
+    color: var(--text-dark);
 }
 
 /* Progress Bar */
@@ -53,7 +54,7 @@
 
 .progress-bar {
     height: 8px;
-    background-color: #e9ecef;
+    background-color: var(--warm-beige);
     border-radius: 4px;
     overflow: hidden;
     margin-bottom: 10px;
@@ -61,7 +62,7 @@
 
 .progress {
     height: 100%;
-    background-color: #4a6fa5;
+    background-color: var(--deep-blue);
     width: 0%;
     transition: width 0.3s ease;
 }
@@ -69,7 +70,7 @@
 .progress-text {
     text-align: center;
     font-size: 0.9rem;
-    color: #6c757d;
+    color: var(--text-dark);
 }
 
 /* Question Groups */
@@ -83,17 +84,17 @@
 }
 
 .question-group h3 {
-    color: #FF6B4A;
+    color: var(--rich-burgundy);
     margin-bottom: 20px;
     font-size: 1.725rem;
-    border-bottom: 2px solid #e9ecef;
+    border-bottom: 2px solid var(--warm-beige);
     padding-bottom: 10px;
 }
 
 .question {
     margin-bottom: 30px;
     padding: 20px;
-    background-color: #f8f9fa;
+    background-color: var(--warm-beige);
     border-radius: 8px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -107,7 +108,7 @@
     margin-bottom: 15px;
     font-size: 1.1rem;
     font-weight: 700;
-    color: #333;
+    color: var(--deep-blue);
 }
 
 /* Likert Scale */
@@ -122,7 +123,7 @@
     flex: 1;
     text-align: center;
     font-size: 0.9rem;
-    color: #555;
+    color: var(--text-dark);
     min-width: 40px;
     white-space: nowrap;
 }
@@ -140,8 +141,8 @@
 }
 
 .secondary-button {
-    background-color: #e9ecef;
-    color: #495057;
+    background-color: var(--warm-beige);
+    color: var(--deep-blue);
     border: none;
     padding: 12px 24px;
     border-radius: 6px;
@@ -151,7 +152,7 @@
 }
 
 .secondary-button:hover {
-    background-color: #dee2e6;
+    background-color: var(--soft-gold);
 }
 
 .secondary-button:disabled {
@@ -164,7 +165,7 @@
     text-align: center;
     margin-bottom: 40px;
     padding: 20px;
-    background-color: #f8f9fa;
+    background-color: var(--warm-beige);
     border-radius: 8px;
 }
 
@@ -172,7 +173,7 @@
     margin-bottom: 15px;
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #555;
+    color: var(--text-dark);
 }
 
 .results-container {
@@ -182,19 +183,19 @@
 .category-results {
     margin-bottom: 30px;
     padding: 20px;
-    background-color: #f8f9fa;
+    background-color: var(--warm-beige);
     border-radius: 8px;
 }
 
 .category-results h3 {
-    color: #4a6fa5;
+    color: var(--deep-blue);
     margin-bottom: 15px;
     font-size: 1.3rem;
 }
 
 .score-bar {
     height: 12px;
-    background-color: #e9ecef;
+    background-color: var(--warm-beige);
     border-radius: 6px;
     overflow: hidden;
     margin-bottom: 10px;
@@ -202,181 +203,177 @@
 
 .score-fill {
     height: 100%;
-    background-color: #4a6fa5;
-    transition: width 0.5s ease, background-color 0.3s ease;
+    transition: width 0.3s ease;
 }
 
 .score-fill.green {
-    background-color: #28a745;
+    background-color: #4CAF50;
 }
 
 .score-fill.yellow {
-    background-color: #ffc107;
+    background-color: var(--soft-gold);
 }
 
 .score-fill.red {
-    background-color: #dc3545;
+    background-color: var(--rich-burgundy);
 }
 
 .score-text {
-    font-size: 1rem;
-    color: #6c757d;
-    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    margin-top: 5px;
 }
 
 .score-feedback {
-    font-size: 0.95rem;
-    color: #555;
-    line-height: 1.5;
+    margin-top: 15px;
+    font-size: 1rem;
+    color: var(--text-dark);
 }
 
 .results-actions {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    text-align: center;
     margin-top: 40px;
 }
 
 /* Analysis Section */
 .analysis-container {
-    margin-top: 40px;
-    padding: 30px;
     background-color: white;
     border-radius: 12px;
+    padding: 30px;
+    margin-top: 40px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .analysis-container h3 {
-    color: #4a6fa5;
-    font-size: 1.8rem;
-    margin-bottom: 25px;
+    color: var(--deep-blue);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
     text-align: center;
 }
 
 .analysis-content {
-    max-width: 800px;
-    margin: 0 auto;
+    margin-top: 30px;
 }
 
 .overall-health {
-    text-align: center;
-    margin-bottom: 30px;
+    background-color: var(--warm-beige);
     padding: 20px;
-    background-color: #f8f9fa;
     border-radius: 8px;
+    margin-bottom: 30px;
 }
 
 .overall-health h4 {
-    font-size: 1.4rem;
+    color: var(--rich-burgundy);
     margin-bottom: 15px;
-    color: #333;
+    font-size: 1.2rem;
 }
 
 .health-strong {
-    color: #28a745;
+    color: #4CAF50;
 }
 
 .health-moderate {
-    color: #ffc107;
+    color: var(--soft-gold);
 }
 
 .health-needs-attention {
-    color: #dc3545;
+    color: var(--rich-burgundy);
 }
 
 .strengths-weaknesses {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
-    margin-bottom: 40px;
+    margin: 30px 0;
 }
 
 .strengths, .improvements {
+    background-color: var(--warm-beige);
     padding: 20px;
-    background-color: #f8f9fa;
     border-radius: 8px;
 }
 
 .strengths h4, .improvements h4 {
-    color: #4a6fa5;
-    font-size: 1.3rem;
+    color: var(--deep-blue);
     margin-bottom: 15px;
+    font-size: 1.2rem;
 }
 
 .strengths ul, .improvements ul {
-    list-style-type: none;
-    padding: 0;
+    list-style: none;
+    padding-left: 20px;
 }
 
 .strengths li, .improvements li {
     margin-bottom: 10px;
-    padding-left: 25px;
     position: relative;
+    padding-left: 25px;
 }
 
 .strengths li:before {
     content: "✓";
-    color: #28a745;
     position: absolute;
     left: 0;
+    color: #4CAF50;
+    font-weight: bold;
 }
 
 .improvements li:before {
     content: "→";
-    color: #ffc107;
     position: absolute;
     left: 0;
+    color: var(--rich-burgundy);
+    font-weight: bold;
 }
 
 .recommendations {
-    margin-bottom: 40px;
+    background-color: var(--warm-beige);
     padding: 20px;
-    background-color: #f8f9fa;
     border-radius: 8px;
+    margin-top: 30px;
 }
 
 .recommendations h4 {
-    color: #4a6fa5;
-    font-size: 1.3rem;
+    color: var(--deep-blue);
     margin-bottom: 15px;
+    font-size: 1.2rem;
 }
 
 .recommendations ul {
-    list-style-type: none;
-    padding: 0;
+    list-style: none;
+    padding-left: 20px;
 }
 
 .recommendations li {
     margin-bottom: 15px;
-    padding-left: 25px;
     position: relative;
-    line-height: 1.5;
+    padding-left: 25px;
 }
 
 .recommendations li:before {
-    content: "•";
-    color: #4a6fa5;
+    content: "★";
     position: absolute;
-    left: 8px;
-    font-size: 1.2em;
+    left: 0;
+    color: var(--soft-gold);
+    font-weight: bold;
 }
 
 .next-steps {
+    text-align: center;
+    margin-top: 40px;
     padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
 }
 
 .next-steps h4 {
-    color: #4a6fa5;
-    font-size: 1.3rem;
+    color: var(--deep-blue);
     margin-bottom: 15px;
+    font-size: 1.3rem;
 }
 
 .next-steps p {
-    margin-bottom: 15px;
-    line-height: 1.6;
-    color: #555;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    font-size: 1.1rem;
 }
 
 /* Modal Styles */
@@ -470,7 +467,7 @@
     }
     
     .assessment-section {
-        padding: 30px 20px;
+        padding: 20px;
         margin: 0 15px;
     }
     
@@ -479,52 +476,46 @@
     }
     
     .likert-scale {
-        flex-wrap: nowrap;
-        gap: 2px;
-        overflow-x: auto;
-        padding-bottom: 5px;
-        -webkit-overflow-scrolling: touch;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
     }
     
     .likert-scale label {
-        flex: 0 0 auto;
-        min-width: 35px;
-        font-size: 0.85rem;
+        width: 100%;
+        text-align: left;
+        padding: 5px;
     }
     
     .navigation-buttons {
         flex-direction: column;
-        gap: 15px;
+        gap: 10px;
     }
     
     .navigation-buttons button,
-    .results-actions button,
-    .results-actions a {
+    .secondary-button {
         width: 100%;
     }
     
     .strengths-weaknesses {
         grid-template-columns: 1fr;
-        gap: 20px;
     }
     
     .analysis-container {
-        padding: 20px;
         margin: 20px 15px;
     }
     
     .analysis-container h3 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
     
     .overall-health h4 {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
     
     .modal-content {
-        margin: 20% auto;
-        width: 95%;
-        padding: 20px;
+        width: 90%;
+        margin: 20px auto;
     }
     
     .form-actions {
@@ -533,26 +524,28 @@
     
     .form-actions button {
         width: 100%;
+        margin: 5px 0;
     }
 }
 
 @media (max-width: 480px) {
     .health-check-page {
-        padding: 90px 0 30px;
+        padding: 80px 0 30px;
     }
     
     .assessment-section {
-        padding: 25px 15px;
+        padding: 15px;
     }
     
     .intro-content p,
-    .assessment-info p,
-    .results-summary p {
+    .question p,
+    .results-summary p,
+    .score-feedback {
         font-size: 0.95rem;
     }
     
     .question-group h3 {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
     
     .category-results h3 {
@@ -563,7 +556,7 @@
     .improvements h4,
     .recommendations h4,
     .next-steps h4 {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
     
     .strengths li, 
@@ -573,11 +566,10 @@
     }
     
     .likert-scale {
-        gap: 1px;
+        margin: 15px 0;
     }
     
     .likert-scale label {
-        min-width: 30px;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
     }
 } 
