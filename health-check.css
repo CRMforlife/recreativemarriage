@@ -451,6 +451,18 @@
     margin-top: 20px;
 }
 
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.action-buttons button {
+    min-width: 160px;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
     .health-check-page {
