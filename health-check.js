@@ -1,4 +1,9 @@
+// Prevent popup from showing on health-check page
 document.addEventListener('DOMContentLoaded', function() {
+    // Set a flag in localStorage to indicate the popup has been shown
+    // This will prevent it from showing when returning to the main page
+    localStorage.setItem('popupShown', 'true');
+
     // DOM Elements
     const introSection = document.getElementById('intro-section');
     const assessmentForm = document.getElementById('assessment-form');
