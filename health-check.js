@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 feedbackElement.textContent = 'Worth discussing. Consider having an open conversation about this area.';
             } else {
                 scoreElement.className = 'score-fill red';
-                feedbackElement.textContent = 'Important to address. Consider seeking support from a relationship coach or therapist.';
+                feedbackElement.textContent = 'Important to address. I recommend getting the book.';
             }
         }
     }
@@ -360,7 +360,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const averageScore = totalScore / Object.keys(scores).length;
         
         if (averageScore < 9) {
-            recommendations.push("Consider seeking professional support from a relationship coach or therapist to address multiple areas of concern.");
+            recommendations.push("I recommend getting the book to address multiple areas of concern.");
         } else if (averageScore < 12) {
             recommendations.push("Focus on small, consistent improvements rather than trying to fix everything at once. Progress in relationships happens gradually.");
         } else {
