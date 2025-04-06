@@ -1,0 +1,28 @@
+:root {
+    /* Brand Colors */
+    --deep-blue: #003366;
+    --rich-burgundy: #800020;
+    --soft-gold: #D4AF37;
+    --warm-beige: #F5F5DC;
+    
+    /* Text Colors */
+    --text-dark: #333333;
+    --text-light: #FFFFFF;
+    
+    /* Typography */
+    --heading-font: 'EB Garamond', serif;
+    --body-font: 'Lato', sans-serif;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    
+    /* Container */
+    --container-width: 1200px;
+    --container-padding: 2rem;
+    
+    /* Transitions */
+    --transition-speed: 0.3s;
+} 

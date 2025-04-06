@@ -1,0 +1,156 @@
+/* Health Check Page */
+.health-check-intro {
+    background: linear-gradient(135deg, var(--deep-blue) 0%, var(--rich-burgundy) 100%);
+    color: var(--text-light);
+    padding: calc(var(--spacing-lg) * 2) 0 var(--spacing-lg);
+    text-align: center;
+}
+
+.health-check-intro h1 {
+    color: var(--text-light);
+}
+
+.health-check-intro p {
+    max-width: 800px;
+    margin: 0 auto var(--spacing-md);
+    font-size: 1.2rem;
+}
+
+/* Assessment Form */
+.assessment-form {
+    display: none;
+    max-width: 800px;
+    margin: var(--spacing-lg) auto;
+    padding: 0 var(--spacing-md);
+}
+
+.question {
+    margin-bottom: var(--spacing-lg);
+}
+
+.question h3 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--deep-blue);
+}
+
+.options {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.option-button {
+    flex: 1;
+    min-width: 120px;
+    padding: var(--spacing-sm);
+    background-color: var(--text-light);
+    border: 2px solid var(--deep-blue);
+    border-radius: 4px;
+    font-family: var(--body-font);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+}
+
+.option-button:hover {
+    background-color: var(--deep-blue);
+    color: var(--text-light);
+}
+
+.option-button.selected {
+    background-color: var(--deep-blue);
+    color: var(--text-light);
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--spacing-lg);
+}
+
+/* Results Section */
+.results-section {
+    display: none;
+    max-width: 800px;
+    margin: var(--spacing-lg) auto;
+    padding: 0 var(--spacing-md);
+}
+
+.results-summary {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.category-result {
+    margin-bottom: var(--spacing-lg);
+}
+
+.score-bar {
+    height: 20px;
+    background-color: var(--warm-beige);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: var(--spacing-xs) 0;
+}
+
+.score-fill {
+    height: 100%;
+    background-color: var(--soft-gold);
+    transition: width var(--transition-speed) ease;
+}
+
+.feedback {
+    font-style: italic;
+    color: var(--deep-blue);
+}
+
+/* Share Results Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    background-color: var(--text-light);
+    max-width: 500px;
+    margin: 10% auto;
+    padding: var(--spacing-md);
+    border-radius: 8px;
+}
+
+.close-modal {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--deep-blue);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .options {
+        flex-direction: column;
+    }
+
+    .option-button {
+        width: 100%;
+    }
+
+    .nav-buttons {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .nav-buttons button {
+        width: 100%;
+    }
+} 
