@@ -2,7 +2,7 @@
 .health-check-page {
     padding: 120px 0 60px;
     min-height: 100vh;
-    background: linear-gradient(135deg, var(--warm-beige) 0%, #FFFFFF 100%);
+    background: linear-gradient(135deg, var(--text-light), var(--secondary-beige));
 }
 
 /* Assessment Sections */
@@ -10,7 +10,7 @@
     display: none;
     max-width: 800px;
     margin: 0 auto;
-    background-color: white;
+    background-color: var(--text-light);
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     padding: 40px;
@@ -34,11 +34,12 @@
 }
 
 .assessment-info {
-    background-color: var(--warm-beige);
+    background-color: var(--secondary-beige);
     border-radius: 8px;
     padding: 20px;
     margin: 30px 0;
     text-align: left;
+    border: 1px solid var(--primary-blue);
 }
 
 .assessment-info p {
@@ -54,7 +55,7 @@
 
 .progress-bar {
     height: 8px;
-    background-color: var(--warm-beige);
+    background-color: var(--secondary-beige);
     border-radius: 4px;
     overflow: hidden;
     margin-bottom: 10px;
@@ -62,7 +63,7 @@
 
 .progress {
     height: 100%;
-    background-color: var(--deep-blue);
+    background-color: var(--primary-burgundy);
     width: 0%;
     transition: width 0.3s ease;
 }
@@ -84,31 +85,32 @@
 }
 
 .question-group h3 {
-    color: var(--rich-burgundy);
+    color: var(--primary-burgundy);
     margin-bottom: 20px;
     font-size: 1.725rem;
-    border-bottom: 2px solid var(--warm-beige);
+    border-bottom: 2px solid var(--secondary-beige);
     padding-bottom: 10px;
 }
 
 .question {
     margin-bottom: 30px;
     padding: 20px;
-    background-color: var(--warm-beige);
+    background-color: var(--secondary-beige);
     border-radius: 8px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid var(--primary-blue);
 }
 
 .question:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .question p {
     margin-bottom: 15px;
     font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--deep-blue);
+    font-weight: 600;
+    color: var(--text-dark);
 }
 
 /* Likert Scale */
@@ -126,6 +128,14 @@
     color: var(--text-dark);
     min-width: 40px;
     white-space: nowrap;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.likert-scale label:hover {
+    background-color: var(--primary-blue);
+    color: var(--text-light);
 }
 
 .likert-scale input[type="radio"] {
@@ -141,18 +151,19 @@
 }
 
 .secondary-button {
-    background-color: var(--warm-beige);
-    color: var(--deep-blue);
-    border: none;
+    background-color: var(--secondary-beige);
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-blue);
     padding: 12px 24px;
     border-radius: 6px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .secondary-button:hover {
-    background-color: var(--soft-gold);
+    background-color: var(--primary-blue);
+    color: var(--text-light);
 }
 
 .secondary-button:disabled {
@@ -165,8 +176,9 @@
     text-align: center;
     margin-bottom: 40px;
     padding: 20px;
-    background-color: var(--warm-beige);
+    background-color: var(--secondary-beige);
     border-radius: 8px;
+    border: 1px solid var(--primary-blue);
 }
 
 .results-summary p {
@@ -183,19 +195,20 @@
 .category-results {
     margin-bottom: 30px;
     padding: 20px;
-    background-color: var(--warm-beige);
+    background-color: var(--secondary-beige);
     border-radius: 8px;
+    border: 1px solid var(--primary-blue);
 }
 
 .category-results h3 {
-    color: var(--deep-blue);
+    color: var(--primary-burgundy);
     margin-bottom: 15px;
     font-size: 1.3rem;
 }
 
 .score-bar {
     height: 12px;
-    background-color: var(--warm-beige);
+    background-color: var(--text-light);
     border-radius: 6px;
     overflow: hidden;
     margin-bottom: 10px;
@@ -203,215 +216,211 @@
 
 .score-fill {
     height: 100%;
-    transition: width 0.3s ease;
+    background-color: var(--primary-burgundy);
+    transition: width 0.5s ease, background-color 0.3s ease;
 }
 
 .score-fill.green {
-    background-color: #4CAF50;
+    background-color: var(--secondary-gold);
 }
 
 .score-fill.yellow {
-    background-color: var(--soft-gold);
+    background-color: var(--primary-burgundy);
 }
 
 .score-fill.red {
-    background-color: var(--rich-burgundy);
+    background-color: var(--primary-blue);
 }
 
 .score-text {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--text-dark);
-    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 .score-feedback {
-    margin-top: 15px;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--text-dark);
-}
-
-.results-actions {
-    text-align: center;
-    margin-top: 40px;
+    line-height: 1.5;
 }
 
 /* Analysis Section */
 .analysis-container {
+    margin-top: 40px;
+    padding: 30px;
     background-color: white;
     border-radius: 12px;
-    padding: 30px;
-    margin-top: 40px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .analysis-container h3 {
-    color: var(--deep-blue);
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+    color: #4a6fa5;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
     text-align: center;
 }
 
 .analysis-content {
-    margin-top: 30px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .overall-health {
-    background-color: var(--warm-beige);
-    padding: 20px;
-    border-radius: 8px;
+    text-align: center;
     margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
 }
 
 .overall-health h4 {
-    color: var(--rich-burgundy);
+    font-size: 1.4rem;
     margin-bottom: 15px;
-    font-size: 1.2rem;
+    color: #333;
 }
 
 .health-strong {
-    color: #4CAF50;
+    color: #28a745;
 }
 
 .health-moderate {
-    color: var(--soft-gold);
+    color: #ffc107;
 }
 
 .health-needs-attention {
-    color: var(--rich-burgundy);
+    color: #dc3545;
 }
 
 .strengths-weaknesses {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
-    margin: 30px 0;
+    margin-bottom: 40px;
 }
 
 .strengths, .improvements {
-    background-color: var(--warm-beige);
     padding: 20px;
+    background-color: #f8f9fa;
     border-radius: 8px;
 }
 
 .strengths h4, .improvements h4 {
-    color: var(--deep-blue);
+    color: #4a6fa5;
+    font-size: 1.3rem;
     margin-bottom: 15px;
-    font-size: 1.2rem;
 }
 
 .strengths ul, .improvements ul {
-    list-style: none;
-    padding-left: 20px;
+    list-style-type: none;
+    padding: 0;
 }
 
 .strengths li, .improvements li {
     margin-bottom: 10px;
-    position: relative;
     padding-left: 25px;
+    position: relative;
 }
 
 .strengths li:before {
     content: "✓";
+    color: #28a745;
     position: absolute;
     left: 0;
-    color: #4CAF50;
-    font-weight: bold;
 }
 
 .improvements li:before {
     content: "→";
+    color: #ffc107;
     position: absolute;
     left: 0;
-    color: var(--rich-burgundy);
-    font-weight: bold;
 }
 
 .recommendations {
-    background-color: var(--warm-beige);
+    margin-bottom: 40px;
     padding: 20px;
+    background-color: #f8f9fa;
     border-radius: 8px;
-    margin-top: 30px;
 }
 
 .recommendations h4 {
-    color: var(--deep-blue);
+    color: #4a6fa5;
+    font-size: 1.3rem;
     margin-bottom: 15px;
-    font-size: 1.2rem;
 }
 
 .recommendations ul {
-    list-style: none;
-    padding-left: 20px;
+    list-style-type: none;
+    padding: 0;
 }
 
 .recommendations li {
     margin-bottom: 15px;
-    position: relative;
     padding-left: 25px;
+    position: relative;
+    line-height: 1.5;
 }
 
 .recommendations li:before {
-    content: "★";
+    content: "•";
+    color: #4a6fa5;
     position: absolute;
-    left: 0;
-    color: var(--soft-gold);
-    font-weight: bold;
+    left: 8px;
+    font-size: 1.2em;
 }
 
 .next-steps {
-    text-align: center;
-    margin-top: 40px;
     padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
 }
 
 .next-steps h4 {
-    color: var(--deep-blue);
-    margin-bottom: 15px;
+    color: #4a6fa5;
     font-size: 1.3rem;
+    margin-bottom: 15px;
 }
 
 .next-steps p {
-    color: var(--text-dark);
-    margin-bottom: 20px;
-    font-size: 1.1rem;
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #555;
 }
 
 /* Modal Styles */
 .modal {
     display: none;
     position: fixed;
-    z-index: 1000;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    overflow: auto;
+    z-index: 1000;
 }
 
 .modal-content {
-    background-color: #fff;
+    position: relative;
+    background-color: var(--text-light);
     margin: 10% auto;
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     width: 90%;
-    max-width: 500px;
-    position: relative;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .close-modal {
     position: absolute;
-    top: 15px;
     right: 20px;
-    font-size: 28px;
-    font-weight: bold;
-    color: #666;
+    top: 20px;
+    font-size: 24px;
     cursor: pointer;
+    color: var(--text-dark);
+    transition: color 0.2s ease;
 }
 
 .close-modal:hover {
-    color: #333;
+    color: var(--primary-burgundy);
 }
 
 /* Form Styles */
@@ -422,30 +431,31 @@
 .form-group label {
     display: block;
     margin-bottom: 8px;
+    color: var(--text-dark);
     font-weight: 600;
-    color: #333;
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    font-family: 'Source Sans Pro', sans-serif;
+    border: 1px solid var(--primary-blue);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
 }
 
-.form-group textarea {
-    resize: vertical;
-    min-height: 100px;
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-burgundy);
 }
 
 .form-actions {
     display: flex;
     justify-content: flex-end;
-    gap: 10px;
-    margin-top: 20px;
+    gap: 15px;
+    margin-top: 30px;
 }
 
 /* Action Buttons */
@@ -456,120 +466,87 @@
     margin-top: 40px;
 }
 
-.action-buttons button {
-    min-width: 160px;
+.action-buttons button,
+.action-buttons a {
+    min-width: 150px;
 }
 
-/* Responsive Styles */
+/* Responsive Design */
 @media (max-width: 768px) {
     .health-check-page {
-        padding: 100px 0 40px;
+        padding: 80px 0 40px;
     }
-    
+
     .assessment-section {
-        padding: 20px;
-        margin: 0 15px;
+        padding: 30px 20px;
     }
-    
+
     .question p {
         font-size: 1rem;
     }
-    
+
     .likert-scale {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
+        flex-wrap: wrap;
     }
-    
+
     .likert-scale label {
-        width: 100%;
-        text-align: left;
-        padding: 5px;
+        flex: 1 1 calc(20% - 10px);
+        min-width: 60px;
     }
-    
+
     .navigation-buttons {
         flex-direction: column;
-        gap: 10px;
+        gap: 15px;
     }
-    
+
     .navigation-buttons button,
-    .secondary-button {
+    .action-buttons button,
+    .action-buttons a {
         width: 100%;
     }
-    
-    .strengths-weaknesses {
-        grid-template-columns: 1fr;
-    }
-    
-    .analysis-container {
-        margin: 20px 15px;
-    }
-    
-    .analysis-container h3 {
-        font-size: 1.3rem;
-    }
-    
-    .overall-health h4 {
-        font-size: 1.1rem;
-    }
-    
+
     .modal-content {
-        width: 90%;
-        margin: 20px auto;
+        margin: 20px;
+        padding: 20px;
     }
-    
+
     .form-actions {
         flex-direction: column;
     }
-    
+
     .form-actions button {
         width: 100%;
-        margin: 5px 0;
     }
 }
 
 @media (max-width: 480px) {
     .health-check-page {
-        padding: 80px 0 30px;
+        padding: 60px 0 30px;
     }
-    
+
     .assessment-section {
-        padding: 15px;
+        padding: 20px 15px;
     }
-    
+
     .intro-content p,
-    .question p,
-    .results-summary p,
-    .score-feedback {
-        font-size: 0.95rem;
+    .results-summary p {
+        font-size: 1rem;
     }
-    
+
     .question-group h3 {
         font-size: 1.4rem;
     }
-    
+
     .category-results h3 {
         font-size: 1.2rem;
     }
-    
-    .strengths h4, 
-    .improvements h4,
-    .recommendations h4,
-    .next-steps h4 {
-        font-size: 1.1rem;
-    }
-    
-    .strengths li, 
-    .improvements li,
-    .recommendations li {
-        font-size: 0.95rem;
-    }
-    
+
     .likert-scale {
-        margin: 15px 0;
+        gap: 2px;
     }
-    
+
     .likert-scale label {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+        padding: 6px;
     }
 } 
