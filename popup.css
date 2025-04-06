@@ -135,4 +135,107 @@
     .interest-form label {
         font-size: 0.9rem;
     }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .popup-overlay {
+        display: none !important; /* Use !important to override the .active class */
+    }
+}
+
+.thank-you-container {
+    text-align: center;
+    padding: 1rem;
+}
+
+.thank-you-container h2 {
+    color: #003366;
+    font-family: 'Garamond', serif;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.thank-you-container h3 {
+    color: #003366;
+    font-family: 'Garamond', serif;
+    font-size: 1.4rem;
+    margin: 1.5rem 0 1rem;
+}
+
+.thank-you-container p {
+    color: #333333;
+    font-family: 'Lato', sans-serif;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.selected-interests {
+    background-color: #F5F5DC;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+.selected-interests ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.selected-interests li {
+    color: #333333;
+    font-family: 'Lato', sans-serif;
+    padding: 0.5rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.selected-interests li::before {
+    content: "✨";
+    position: absolute;
+    left: 0;
+    color: #D4AF37;
+}
+
+.cta-section {
+    background-color: #003366;
+    color: #FFFFFF;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+.cta-section h3 {
+    color: #D4AF37;
+    margin-bottom: 1rem;
+}
+
+.cta-section p {
+    color: #FFFFFF;
+    margin-bottom: 1.5rem;
+}
+
+.cta-section .cta-button {
+    display: inline-block;
+    background-color: #D4AF37;
+    color: #003366;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    margin: 1rem 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-section .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.closing-text {
+    font-style: italic;
+    color: #D4AF37 !important;
+    margin-top: 1rem;
 } 
