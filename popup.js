@@ -40,13 +40,23 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
+        // Show loading state
+        const submitButton = this.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.textContent;
+        submitButton.textContent = 'Saving...';
+        submitButton.disabled = true;
+        
         try {
+            console.log('Sending interests to server:', interests);
+            
             // Send data to server
             const response = await fetch('http://localhost:3000/api/save-interests', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ interests })
             });
+            
+            console.log('Server response status:', response.status);
             
             if (response.ok) {
                 // Hide popup and mark as shown
@@ -56,11 +66,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Show thank you message
                 alert('Thank you for your response! We\'ll use this information to provide you with relevant content.');
             } else {
-                throw new Error('Failed to save interests');
+                // Try to get error details from response
+                const errorData = await response.json().catch(() => ({}));
+                console.error('Server error:', errorData);
+                throw new Error(errorData.error || 'Failed to save interests');
             }
         } catch (error) {
             console.error('Error saving interests:', error);
-            alert('There was an error saving your preferences. Please try again later.');
+            alert('There was an error saving your preferences: ' + error.message + '. Please try again later.');
+        } finally {
+            // Reset button state
+            submitButton.textContent = originalButtonText;
+            submitButton.disabled = false;
         }
     });
 }); 
