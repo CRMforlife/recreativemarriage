@@ -16,6 +16,7 @@
     </script>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="cta.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
@@ -108,6 +109,44 @@
         </div>
     </section>
 
+    <section class="interest-cta">
+        <div class="container">
+            <h2>What Topics Interest You Most?</h2>
+            <p class="cta-description">Help us understand your needs better by selecting the topics you'd like to learn more about.</p>
+            <form id="interest-cta-form" class="interest-cta-form">
+                <div class="checkbox-grid">
+                    <label>
+                        <input type="checkbox" name="interests" value="creativity">
+                        <span>How to develop creativity in a relationship</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="interests" value="empathy">
+                        <span>Empathy and listening skills</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="interests" value="intimacy">
+                        <span>Rediscovering intimacy</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="interests" value="conflict">
+                        <span>Constructive handling of disagreements</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="interests" value="imagination">
+                        <span>Using imagination to strengthen the relationship</span>
+                    </label>
+                </div>
+                <div class="gdpr-consent">
+                    <label>
+                        <input type="checkbox" id="cta-gdpr-consent" required>
+                        I consent to the processing of my data for the purpose of receiving personalized content.
+                    </label>
+                </div>
+                <button type="submit" class="cta-button">Submit My Interests</button>
+            </form>
+        </div>
+    </section>
+
     <section class="about-author">
         <div class="container">
             <h2>About the Author</h2>
@@ -144,5 +183,6 @@
     </footer>
 
     <script src="popup.js"></script>
+    <script src="cta.js"></script>
 </body>
 </html> 

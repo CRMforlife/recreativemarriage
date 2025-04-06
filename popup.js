@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         try {
             // Send data to server
-            const response = await fetch('/api/save-interests', {
+            const response = await fetch('http://localhost:3000/api/save-interests', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ interests })

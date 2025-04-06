@@ -9,7 +9,11 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+    origin: ['http://localhost:8000', 'http://127.0.0.1:8000'],
+    methods: ['GET', 'POST'],
+    credentials: true
+}));
 app.use(express.static(path.join(__dirname, './')));
 
 // Database file path

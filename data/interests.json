@@ -1,0 +1,23 @@
+{
+  "interests": [
+    {
+      "id": 1743963372104,
+      "submitted_at": "2025-04-06T18:16:12.104Z",
+      "interests": [
+        "creativity",
+        "intimacy",
+        "conflict",
+        "imagination"
+      ]
+    },
+    {
+      "id": 1743963603753,
+      "submitted_at": "2025-04-06T18:20:03.753Z",
+      "interests": [
+        "empathy",
+        "intimacy",
+        "conflict"
+      ]
+    }
+  ]
+}

@@ -12,6 +12,10 @@
     align-items: center;
 }
 
+.popup-overlay.active {
+    display: flex;
+}
+
 .interest-popup {
     background-color: white;
     padding: 2rem;
