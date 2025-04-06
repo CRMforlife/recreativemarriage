@@ -1,0 +1,571 @@
+/* Health Check Page Styles */
+.health-check-page {
+    padding: 120px 0 60px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+}
+
+/* Assessment Sections */
+.assessment-section {
+    display: none;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+}
+
+.assessment-section.active {
+    display: block;
+}
+
+/* Introduction Section */
+.intro-content {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.intro-content p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.assessment-info {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 30px 0;
+    text-align: left;
+}
+
+.assessment-info p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+/* Progress Bar */
+.progress-container {
+    margin-bottom: 30px;
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress {
+    height: 100%;
+    background-color: #4a6fa5;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* Question Groups */
+.question-group {
+    margin-bottom: 40px;
+    display: none;
+}
+
+.question-group.active {
+    display: block;
+}
+
+.question-group h3 {
+    color: #4a6fa5;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 10px;
+}
+
+.question {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.question:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.question p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Likert Scale */
+.likert-scale {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    gap: 5px;
+}
+
+.likert-scale label {
+    flex: 1;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #555;
+    min-width: 40px;
+    white-space: nowrap;
+}
+
+.likert-scale input[type="radio"] {
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.secondary-button {
+    background-color: #e9ecef;
+    color: #495057;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.secondary-button:hover {
+    background-color: #dee2e6;
+}
+
+.secondary-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Results Section */
+.results-summary {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.results-summary p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.results-container {
+    margin-bottom: 40px;
+}
+
+.category-results {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.category-results h3 {
+    color: #4a6fa5;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.score-bar {
+    height: 12px;
+    background-color: #e9ecef;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.score-fill {
+    height: 100%;
+    background-color: #4a6fa5;
+    transition: width 0.5s ease, background-color 0.3s ease;
+}
+
+.score-fill.green {
+    background-color: #28a745;
+}
+
+.score-fill.yellow {
+    background-color: #ffc107;
+}
+
+.score-fill.red {
+    background-color: #dc3545;
+}
+
+.score-text {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 10px;
+}
+
+.score-feedback {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.results-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+/* Analysis Section */
+.analysis-container {
+    margin-top: 40px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.analysis-container h3 {
+    color: #4a6fa5;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.analysis-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.overall-health {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.overall-health h4 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.health-strong {
+    color: #28a745;
+}
+
+.health-moderate {
+    color: #ffc107;
+}
+
+.health-needs-attention {
+    color: #dc3545;
+}
+
+.strengths-weaknesses {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.strengths, .improvements {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.strengths h4, .improvements h4 {
+    color: #4a6fa5;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.strengths ul, .improvements ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.strengths li, .improvements li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.strengths li:before {
+    content: "✓";
+    color: #28a745;
+    position: absolute;
+    left: 0;
+}
+
+.improvements li:before {
+    content: "→";
+    color: #ffc107;
+    position: absolute;
+    left: 0;
+}
+
+.recommendations {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.recommendations h4 {
+    color: #4a6fa5;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.recommendations ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.recommendations li {
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+    line-height: 1.5;
+}
+
+.recommendations li:before {
+    content: "•";
+    color: #4a6fa5;
+    position: absolute;
+    left: 8px;
+    font-size: 1.2em;
+}
+
+.next-steps {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.next-steps h4 {
+    color: #4a6fa5;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.next-steps p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .health-check-page {
+        padding: 100px 0 40px;
+    }
+    
+    .assessment-section {
+        padding: 30px 20px;
+        margin: 0 15px;
+    }
+    
+    .question p {
+        font-size: 1rem;
+    }
+    
+    .likert-scale {
+        flex-wrap: nowrap;
+        gap: 2px;
+        overflow-x: auto;
+        padding-bottom: 5px;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .likert-scale label {
+        flex: 0 0 auto;
+        min-width: 35px;
+        font-size: 0.85rem;
+    }
+    
+    .navigation-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .navigation-buttons button,
+    .results-actions button,
+    .results-actions a {
+        width: 100%;
+    }
+    
+    .strengths-weaknesses {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .analysis-container {
+        padding: 20px;
+        margin: 20px 15px;
+    }
+    
+    .analysis-container h3 {
+        font-size: 1.5rem;
+    }
+    
+    .overall-health h4 {
+        font-size: 1.2rem;
+    }
+    
+    .modal-content {
+        margin: 20% auto;
+        width: 95%;
+        padding: 20px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .form-actions button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .health-check-page {
+        padding: 90px 0 30px;
+    }
+    
+    .assessment-section {
+        padding: 25px 15px;
+    }
+    
+    .intro-content p,
+    .assessment-info p,
+    .results-summary p {
+        font-size: 0.95rem;
+    }
+    
+    .question-group h3 {
+        font-size: 1.3rem;
+    }
+    
+    .category-results h3 {
+        font-size: 1.2rem;
+    }
+    
+    .strengths h4, 
+    .improvements h4,
+    .recommendations h4,
+    .next-steps h4 {
+        font-size: 1.2rem;
+    }
+    
+    .strengths li, 
+    .improvements li,
+    .recommendations li {
+        font-size: 0.95rem;
+    }
+    
+    .likert-scale {
+        gap: 1px;
+    }
+    
+    .likert-scale label {
+        min-width: 30px;
+        font-size: 0.8rem;
+    }
+} 
