@@ -121,19 +121,22 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-image {
     flex: 1;
-    max-width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 2rem;
 }
 
 .book-cover {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    display: block;
-    object-fit: contain;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.book-cover:hover {
+    transform: scale(1.02);
 }
 
 /* CTA Button */
@@ -217,12 +220,15 @@ footer {
 @media (max-width: 768px) {
     .hero-content {
         flex-direction: column;
-        gap: 2rem;
     }
-
-    .hero-text,
+    
     .hero-image {
-        max-width: 100%;
+        order: -1;
+        margin-bottom: 2rem;
+    }
+    
+    .book-cover {
+        max-width: 80%;
     }
 
     .hero-text h1 {
