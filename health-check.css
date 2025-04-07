@@ -51,6 +51,7 @@
 /* Progress Bar */
 .progress-container {
     margin-bottom: 30px;
+    padding: 0 20px;
 }
 
 .progress-bar {
@@ -59,19 +60,43 @@
     border-radius: 4px;
     overflow: hidden;
     margin-bottom: 10px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .progress {
     height: 100%;
     background-color: var(--primary-burgundy);
     width: 0%;
-    transition: width 0.3s ease;
+    transition: width 0.5s ease-in-out;
+    position: relative;
+}
+
+.progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.1) 100%
+    );
+    animation: progress-shine 2s infinite;
+}
+
+@keyframes progress-shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
 }
 
 .progress-text {
     text-align: center;
     font-size: 0.9rem;
     color: var(--text-dark);
+    font-weight: 500;
 }
 
 /* Question Groups */
@@ -111,6 +136,22 @@
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-dark);
+}
+
+/* Question Validation */
+.question.invalid {
+    border-color: var(--primary-burgundy);
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.question.invalid p {
+    color: var(--primary-burgundy);
 }
 
 /* Likert Scale */
@@ -396,6 +437,13 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.active {
+    display: block;
+    opacity: 1;
 }
 
 .modal-content {
@@ -407,6 +455,12 @@
     max-width: 600px;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.modal.active .modal-content {
+    transform: translateY(0);
 }
 
 .close-modal {
@@ -442,20 +496,30 @@
     border: 1px solid var(--primary-blue);
     border-radius: 6px;
     font-size: 1rem;
-    transition: border-color 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
     border-color: var(--primary-burgundy);
+    box-shadow: 0 0 0 2px rgba(128, 0, 32, 0.1);
 }
 
-.form-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 15px;
-    margin-top: 30px;
+.form-group input.error,
+.form-group textarea.error {
+    border-color: var(--primary-burgundy);
+}
+
+.error-message {
+    color: var(--primary-burgundy);
+    font-size: 0.9rem;
+    margin-top: 5px;
+    display: none;
+}
+
+.form-group.error .error-message {
+    display: block;
 }
 
 /* Action Buttons */

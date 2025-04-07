@@ -137,6 +137,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function goToNextQuestion() {
+        const currentGroup = questionGroups[currentQuestionIndex];
+        
+        if (!validateQuestionGroup(currentGroup)) {
+            alert('Please answer all questions in this section before proceeding.');
+            return;
+        }
+        
         if (currentQuestionIndex < totalQuestions - 1) {
             showQuestion(currentQuestionIndex + 1);
         }
@@ -144,6 +151,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function submitAssessment(e) {
         e.preventDefault();
+        
+        // Validate all question groups
+        let isValid = true;
+        questionGroups.forEach(group => {
+            if (!validateQuestionGroup(group)) {
+                isValid = false;
+            }
+        });
+        
+        if (!isValid) {
+            alert('Please answer all questions before submitting.');
+            return;
+        }
         
         // Calculate scores for each category
         const scores = calculateScores();
@@ -372,84 +392,91 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function downloadResults() {
-        // Create a text representation of the results
-        let resultsText = 'RELATIONSHIP HEALTH CHECK RESULTS\n\n';
+        // Get the current results data
+        const resultsData = generateResultsData();
         
-        for (const category in scoreValueElements) {
-            const score = scoreValueElements[category].textContent;
-            const feedback = feedbackElements[category].textContent;
-            
-            // Format category name
-            const categoryName = category.split('-').map(word => 
-                word.charAt(0).toUpperCase() + word.slice(1)
-            ).join(' ');
-            
-            resultsText += `${categoryName}\n`;
-            resultsText += `Score: ${score}/15\n`;
-            resultsText += `Feedback: ${feedback}\n\n`;
-        }
-        
-        // Add analysis to downloaded results
-        const analysisContainer = document.getElementById('analysis-container');
-        if (analysisContainer) {
-            resultsText += '\n--- RELATIONSHIP ANALYSIS ---\n\n';
-            
-            // Overall health
-            const overallHealth = analysisContainer.querySelector('.overall-health h4').textContent;
-            resultsText += `${overallHealth}\n\n`;
-            
-            // Strengths
-            const strengthsSection = analysisContainer.querySelector('.strengths');
-            resultsText += 'RELATIONSHIP STRENGTHS:\n';
-            const strengthsList = strengthsSection.querySelectorAll('li');
-            if (strengthsList.length > 0) {
-                strengthsList.forEach(item => {
-                    resultsText += `- ${item.textContent}\n`;
-                });
-            } else {
-                resultsText += 'No specific areas scored in the "strong" range.\n';
-            }
-            resultsText += '\n';
-            
-            // Areas for improvement
-            const improvementsSection = analysisContainer.querySelector('.improvements');
-            resultsText += 'AREAS FOR GROWTH:\n';
-            const improvementsList = improvementsSection.querySelectorAll('li');
-            if (improvementsList.length > 0) {
-                improvementsList.forEach(item => {
-                    resultsText += `- ${item.textContent}\n`;
-                });
-            } else {
-                resultsText += 'No specific areas scored in the "needs attention" range.\n';
-            }
-            resultsText += '\n';
-            
-            // Recommendations
-            const recommendationsSection = analysisContainer.querySelector('.recommendations');
-            resultsText += 'PERSONALIZED RECOMMENDATIONS:\n';
-            const recommendationsList = recommendationsSection.querySelectorAll('li');
-            recommendationsList.forEach(item => {
-                resultsText += `- ${item.textContent}\n`;
-            });
-        }
-        
-        resultsText += '\nThis assessment is designed to increase awareness and spark meaningful conversations. ';
-        resultsText += 'No relationship is perfect, but openness and effort make a difference. ';
-        resultsText += 'If any results raised concerns or questions, consider contacting a professional for further support.';
+        // Format the results for download
+        const formattedResults = formatResultsForDownload(resultsData);
         
         // Create a blob and download link
-        const blob = new Blob([resultsText], { type: 'text/plain' });
+        const blob = new Blob([formattedResults], { type: 'text/plain' });
         const url = URL.createObjectURL(blob);
+        
+        // Create a temporary link and trigger download
         const a = document.createElement('a');
         a.href = url;
         a.download = 'relationship-health-check-results.txt';
         document.body.appendChild(a);
         a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
+        
+        // Clean up
+        setTimeout(() => {
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }, 100);
     }
     
-    // Function to generate results data for sharing
+    function formatResultsForDownload(data) {
+        let formattedText = 'RELATIONSHIP HEALTH CHECK RESULTS\n\n';
+        
+        // Add scores
+        formattedText += 'SCORES:\n';
+        for (const [category, score] of Object.entries(data.scores)) {
+            const categoryName = category.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            formattedText += `${categoryName}: ${score}/5\n`;
+        }
+        
+        // Add analysis
+        formattedText += '\nANALYSIS:\n';
+        formattedText += data.analysis + '\n\n';
+        
+        // Add strengths
+        formattedText += 'STRENGTHS:\n';
+        data.strengths.forEach(strength => {
+            formattedText += `- ${strength}\n`;
+        });
+        
+        // Add areas for improvement
+        formattedText += '\nAREAS FOR IMPROVEMENT:\n';
+        data.areasForImprovement.forEach(area => {
+            formattedText += `- ${area}\n`;
+        });
+        
+        // Add recommendations
+        formattedText += '\nRECOMMENDATIONS:\n';
+        data.recommendations.forEach(recommendation => {
+            formattedText += `- ${recommendation}\n`;
+        });
+        
+        return formattedText;
+    }
+    
+    function simulateSendingEmail(email, message, resultsData) {
+        console.log('Simulating email send to:', email);
+        console.log('Message:', message);
+        console.log('Results data:', resultsData);
+        
+        // In a real implementation, this would send the data to a server
+        // For now, we'll just log it to the console
+    }
+    
+    function validateQuestionGroup(group) {
+        const questions = group.querySelectorAll('.question');
+        let isValid = true;
+        
+        questions.forEach(question => {
+            const selectedOption = question.querySelector('input[type="radio"]:checked');
+            if (!selectedOption) {
+                question.classList.add('invalid');
+                isValid = false;
+            } else {
+                question.classList.remove('invalid');
+            }
+        });
+        
+        return isValid;
+    }
+    
     function generateResultsData() {
         const resultsData = {
             date: new Date().toLocaleDateString(),
@@ -474,16 +501,92 @@ document.addEventListener('DOMContentLoaded', function() {
         
         return resultsData;
     }
-    
-    // Function to simulate sending email (in a real implementation, this would be a server call)
-    function simulateSendingEmail(email, message, data) {
-        console.log('Sending email to:', email);
-        console.log('Message:', message);
-        console.log('Results data:', data);
-        
-        // In a real implementation, you would make an AJAX call to your server
-        // The server would then send the email with the results
-        
-        // For demonstration purposes, we're just logging the data
+
+    // Modal Functions
+    function openShareModal() {
+        const modal = document.getElementById('shareModal');
+        modal.classList.add('active');
     }
+
+    function closeShareModal() {
+        const modal = document.getElementById('shareModal');
+        modal.classList.remove('active');
+    }
+
+    function openDownloadModal() {
+        const modal = document.getElementById('downloadModal');
+        modal.classList.add('active');
+    }
+
+    function closeDownloadModal() {
+        const modal = document.getElementById('downloadModal');
+        modal.classList.remove('active');
+    }
+
+    // Form Validation
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+
+    function validateForm(form) {
+        let isValid = true;
+        const emailInput = form.querySelector('#recipientEmail');
+        const emailError = emailInput.nextElementSibling;
+
+        if (!validateEmail(emailInput.value)) {
+            emailInput.classList.add('error');
+            emailError.style.display = 'block';
+            isValid = false;
+        } else {
+            emailInput.classList.remove('error');
+            emailError.style.display = 'none';
+        }
+
+        return isValid;
+    }
+
+    // Share Form Handler
+    document.getElementById('shareForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        if (!validateForm(e.target)) {
+            return;
+        }
+
+        const email = document.getElementById('recipientEmail').value;
+        const message = document.getElementById('message').value;
+        
+        try {
+            // Here you would typically send the data to your backend
+            // For now, we'll just show a success message
+            alert('Results shared successfully!');
+            closeShareModal();
+        } catch (error) {
+            console.error('Error sharing results:', error);
+            alert('Failed to share results. Please try again.');
+        }
+    });
+
+    // Update Progress Bar
+    function updateProgressBar() {
+        const totalQuestions = document.querySelectorAll('.question').length;
+        const answeredQuestions = document.querySelectorAll('input[type="radio"]:checked').length;
+        const progress = (answeredQuestions / totalQuestions) * 100;
+        
+        const progressBar = document.querySelector('.progress');
+        const progressText = document.querySelector('.progress-text');
+        
+        progressBar.style.width = `${progress}%`;
+        progressText.textContent = `${answeredQuestions} of ${totalQuestions} questions answered`;
+    }
+
+    // Add event listeners for radio buttons
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+            const question = radio.closest('.question');
+            question.classList.remove('invalid');
+            updateProgressBar();
+        });
+    });
 }); 
