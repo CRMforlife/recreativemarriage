@@ -395,78 +395,80 @@ document.addEventListener('DOMContentLoaded', function() {
         // Get the current results data
         const resultsData = generateResultsData();
         
-        // Create a formatted text version
-        const textContent = formatResultsForDownload(resultsData);
+        // Format the results for download
+        const formattedResults = formatResultsForDownload(resultsData);
         
         // Create a blob and download link
-        const blob = new Blob([textContent], { type: 'text/plain' });
-        const url = window.URL.createObjectURL(blob);
+        const blob = new Blob([formattedResults], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        
+        // Create a temporary link and trigger download
         const a = document.createElement('a');
         a.href = url;
         a.download = 'relationship-health-check-results.txt';
         document.body.appendChild(a);
         a.click();
-        window.URL.revokeObjectURL(url);
-        document.body.removeChild(a);
+        
+        // Clean up
+        setTimeout(() => {
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }, 100);
     }
-
+    
     function formatResultsForDownload(data) {
-        let text = 'RELATIONSHIP HEALTH CHECK RESULTS\n';
-        text += 'Generated on: ' + new Date().toLocaleDateString() + '\n\n';
+        let formattedText = 'RELATIONSHIP HEALTH CHECK RESULTS\n\n';
         
         // Add scores
-        text += 'SCORES:\n';
-        for (const category in data.scores) {
-            const categoryName = category.split('-').map(word => 
-                word.charAt(0).toUpperCase() + word.slice(1)
-            ).join(' ');
-            text += `${categoryName}: ${data.scores[category]}/15\n`;
+        formattedText += 'SCORES:\n';
+        for (const [category, score] of Object.entries(data.scores)) {
+            const categoryName = category.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            formattedText += `${categoryName}: ${score}/5\n`;
         }
         
         // Add analysis
-        text += '\nANALYSIS:\n';
-        text += `Overall Health: ${data.overallHealth}\n\n`;
+        formattedText += '\nANALYSIS:\n';
+        formattedText += data.analysis + '\n\n';
         
-        text += 'STRENGTHS:\n';
+        // Add strengths
+        formattedText += 'STRENGTHS:\n';
         data.strengths.forEach(strength => {
-            text += `- ${strength}\n`;
+            formattedText += `- ${strength}\n`;
         });
         
-        text += '\nAREAS FOR IMPROVEMENT:\n';
-        data.improvements.forEach(improvement => {
-            text += `- ${improvement}\n`;
+        // Add areas for improvement
+        formattedText += '\nAREAS FOR IMPROVEMENT:\n';
+        data.areasForImprovement.forEach(area => {
+            formattedText += `- ${area}\n`;
         });
         
-        text += '\nRECOMMENDATIONS:\n';
-        data.recommendations.forEach(rec => {
-            text += `- ${rec}\n`;
+        // Add recommendations
+        formattedText += '\nRECOMMENDATIONS:\n';
+        data.recommendations.forEach(recommendation => {
+            formattedText += `- ${recommendation}\n`;
         });
         
-        return text;
+        return formattedText;
     }
-
-    function simulateSendingEmail(partnerEmail, message, resultsData) {
-        // In a real implementation, this would send the data to a server
-        console.log('Sending email to:', partnerEmail);
+    
+    function simulateSendingEmail(email, message, resultsData) {
+        console.log('Simulating email send to:', email);
         console.log('Message:', message);
-        console.log('Results:', resultsData);
+        console.log('Results data:', resultsData);
         
-        // For now, we'll just show a success message
-        alert('Email sent successfully!');
+        // In a real implementation, this would send the data to a server
+        // For now, we'll just log it to the console
     }
-
-    // Add form validation
+    
     function validateQuestionGroup(group) {
         const questions = group.querySelectorAll('.question');
         let isValid = true;
         
         questions.forEach(question => {
-            const radioButtons = question.querySelectorAll('input[type="radio"]');
-            const isAnswered = Array.from(radioButtons).some(radio => radio.checked);
-            
-            if (!isAnswered) {
-                isValid = false;
+            const selectedOption = question.querySelector('input[type="radio"]:checked');
+            if (!selectedOption) {
                 question.classList.add('invalid');
+                isValid = false;
             } else {
                 question.classList.remove('invalid');
             }
@@ -475,7 +477,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return isValid;
     }
     
-    // Function to generate results data for sharing
     function generateResultsData() {
         const resultsData = {
             date: new Date().toLocaleDateString(),
@@ -566,24 +567,6 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Failed to share results. Please try again.');
         }
     });
-
-    // Question Validation
-    function validateQuestionGroup(group) {
-        const questions = group.querySelectorAll('.question');
-        let isValid = true;
-
-        questions.forEach(question => {
-            const selectedOption = question.querySelector('input[type="radio"]:checked');
-            if (!selectedOption) {
-                question.classList.add('invalid');
-                isValid = false;
-            } else {
-                question.classList.remove('invalid');
-            }
-        });
-
-        return isValid;
-    }
 
     // Update Progress Bar
     function updateProgressBar() {
