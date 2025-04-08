@@ -1,8 +1,32 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Function to get the API URL based on environment
     function getApiUrl() {
-        // Always use static mode since we don't have a backend server
-        return 'static';
+        return window.location.hostname === 'localhost' 
+            ? 'http://localhost:3000/api'
+            : 'https://api.recreativemarriage.com/api';
+    }
+
+    // Function to save interests to the server
+    async function saveInterests(interests) {
+        try {
+            const response = await fetch(`${getApiUrl()}/responses`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ interests })
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to save interests');
+            }
+
+            return await response.json();
+        } catch (error) {
+            console.error('Error saving interests:', error);
+            // Fallback to local storage if server is unavailable
+            return saveInterestsLocally(interests);
+        }
     }
 
     // Function to save interests locally when API is not available
@@ -108,12 +132,10 @@ document.addEventListener('DOMContentLoaded', function() {
         submitButton.disabled = true;
         
         try {
-            console.log('Saving interests locally:', interests);
+            // Save interests to server or locally
+            const result = await saveInterests(interests);
             
-            // Save to localStorage
-            await saveInterestsLocally(interests);
-            
-            // Always show thank you message
+            // Display thank you message
             const formContainer = document.querySelector('.interest-cta-form');
             const thankYouContent = displayThankYouMessage(interests);
             
@@ -131,16 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         } catch (error) {
             console.error('Error saving interests:', error);
-            
-            // Even if saving fails, show the thank you message
-            const formContainer = document.querySelector('.interest-cta-form');
-            const thankYouContent = displayThankYouMessage(interests);
-            
-            if (formContainer) {
-                formContainer.innerHTML = thankYouContent;
-                console.log('Thank you message displayed despite error');
-                formContainer.scrollIntoView({ behavior: 'smooth' });
-            }
+            alert('There was an error saving your interests. Please try again.');
         } finally {
             // Reset button state
             submitButton.textContent = originalButtonText;
